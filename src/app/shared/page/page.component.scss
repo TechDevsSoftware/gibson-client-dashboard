@@ -1,0 +1,47 @@
+.page-menu {
+  height: 60px;
+  border-bottom: solid 1px #7a7a7a;
+
+  .page-buttons {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+
+    .page-buttons-spacer {
+      flex-grow: 1;
+    }
+
+    .page-button {
+      background-color: #e5e5e5;
+      cursor: pointer;
+      height: 100%;
+      min-width: 150px;
+
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      text-align: left;
+      padding: 20px;
+      border-left: 1px solid #7a7a7a;
+      border-right: 1px solid #7a7a7a;
+      font-weight: 450;
+
+      &:hover {
+        background-color: #dbdbdb;
+      }
+    }
+  }
+}
+
+tr {
+  cursor: pointer;
+}
+
+thead {
+  border-bottom: solid 3px #7a7a7a;
+}
+
+td {
+  padding: 8px;
+}

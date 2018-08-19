@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: flex;
+}
+button:focus {
+  outline: 0;
+}
+li:focus {
+  outline: 0;
+}

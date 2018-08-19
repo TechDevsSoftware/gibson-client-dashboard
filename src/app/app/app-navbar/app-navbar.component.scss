@@ -1,0 +1,42 @@
+.navbar-top {
+  height: 70px;
+  background-color: black;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  .navbar-top-spacer {
+    flex-grow: 1;
+    // border: solid 1px yellow;
+  }
+
+  .navbar-top-brand {
+    // border: 1px solid red;
+    display: flex;
+    padding: 5px 20px;
+    align-items: center;
+    min-width: 300px;
+
+    .navbar-top-brand-text {
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+
+  .navbar-top-right {
+    // border: solid 1px green;
+
+    .navbar-profile {
+      min-width: 40px;
+      padding: 5px;
+      .navbar-profile-image {
+        width: 60px;
+        height: 60px;
+        background-color: azure;
+        border-radius: 50%;
+      }
+    }
+  }
+}
