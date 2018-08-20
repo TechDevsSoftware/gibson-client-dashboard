@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faCaretDown, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,8 @@ import { faCaretDown, faUsers } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app-sidebar.component.scss']
 })
 export class AppSidebarComponent implements OnInit {
+
+  @Input() collapsed: boolean = true;
 
   constructor() { }
 

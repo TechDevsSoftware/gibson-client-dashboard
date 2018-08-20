@@ -1,17 +1,13 @@
 <div class="top-container">
   <div class="topnav">
-    <app-navbar></app-navbar>
+    <app-navbar (toggleSidebar)="sidebarCollapsed = !sidebarCollapsed"></app-navbar>
   </div>
-
   <div class="body">
-
-    <div class="body-sidenav">
-      <app-sidebar></app-sidebar>
+    <div class="body-sidenav" [ngClass]="{'body-sidenav-collapsed': sidebarCollapsed}">
+      <app-sidebar [collapsed]="sidebarCollapsed"></app-sidebar>
     </div>
     <div class="body-content">
       <router-outlet></router-outlet>
     </div>
-
   </div>
-
 </div>

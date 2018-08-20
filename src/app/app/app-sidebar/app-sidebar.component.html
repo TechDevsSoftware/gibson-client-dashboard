@@ -1,42 +1,42 @@
 <div class="sidebar">
 
   <div class="sidebar-picker">
-    <span class="sidebar-picker-label">123 Dealership</span>
-    <div class="sidebar-icon-container">
+    <span class="sidebar-picker-label" *ngIf="!collapsed">123 Dealership</span>
+    <div class="sidebar-icon-container" *ngIf="!collapsed">
       <i class="sidebar-picker-icon fa fa-caret-down fa-15x"></i>
     </div>
   </div>
 
   <ul class="sidebar-menu">
-    <li routerLink="/dashboard" routerLinkActive="active">
+    <li routerLink="/dashboard" routerLinkActive="active" [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fa fa-15x fa-dashboard"></i>
       </div>
-      <span class="menu-label">Dashboard</span>
+      <span class="menu-label" *ngIf="!collapsed">Dashboard</span>
     </li>
-    <li routerLink="/employees" routerLinkActive="active">
+    <li routerLink="/employees" routerLinkActive="active" [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fas fa-15x fa-user-tie"></i>
       </div>
-      <span class="menu-label">Employees</span>
+      <span class="menu-label" *ngIf="!collapsed">Employees</span>
     </li>
-    <li routerLink="/customers" routerLinkActive="active">
+    <li routerLink="/customers" routerLinkActive="active" [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fa fa-15x fa-users"></i>
       </div>
-      <span class="menu-label">Customers</span>
+      <span class="menu-label" *ngIf="!collapsed">Customers</span>
     </li>
-    <li routerLink="/offers" routerLinkActive="active">
+    <li routerLink="/offers" routerLinkActive="active" [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fa fa-15x fa-money"></i>
       </div>
-      <span class="menu-label">Offers</span>
+      <span class="menu-label" *ngIf="!collapsed">Offers</span>
     </li>
-    <li routerLink="/notifications" routerLinkActive="active">
+    <li routerLink="/notifications" routerLinkActive="active" [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fa fa-15x fa-envelope"></i>
       </div>
-      <span class="menu-label">Notifications</span>
+      <span class="menu-label" *ngIf="!collapsed">Notifications</span>
     </li>
   </ul>
 
@@ -44,17 +44,17 @@
 
   </div>
   <ul class="sidebar-menu">
-    <li routerLink="/settings" routerLinkActive="active">
+    <li routerLink="/settings" routerLinkActive="active" [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fa fa-15x fa-cog"></i>
       </div>
-      <span class="menu-label">Settings</span>
+      <span class="menu-label" *ngIf="!collapsed">Settings</span>
     </li>
-    <li>
+    <li [ngClass]="{'collapsed': collapsed}">
       <div class="menu-icon">
         <i class="fas fa-sign-out-alt fa-15x"></i>
       </div>
-      <span class="menu-label">Logout</span>
+      <span class="menu-label" *ngIf="!collapsed">Logout</span>
     </li>
   </ul>
 
