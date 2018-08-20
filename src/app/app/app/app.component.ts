@@ -1,6 +1,4 @@
 import { Component, HostListener } from '@angular/core';
-import { timingSafeEqual } from 'crypto';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
