@@ -16,8 +16,8 @@
     .body-sidenav {
       width: 300px;
       height: 100%;
-      -webkit-transition: width 0.75s;
-      transition: width 0.75s;
+      -webkit-transition: width 400ms;
+      transition: width 400ms;
     }
     .body-sidenav-collapsed {
       width: 60px !important;
