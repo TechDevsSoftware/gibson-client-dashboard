@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AppNavbarComponent implements OnInit {
 
+  @Input() sidebarCollapsed: boolean;
   @Output() toggleSidebar = new EventEmitter();
 
   constructor() { }
