@@ -1,5 +1,6 @@
+$topnav-height: 60px;
 $sidebar-button-height: 50px;
-$sidebar-width: 260px;
+$sidebar-width: 240px;
 
 .top-container {
   height: 100%;
@@ -8,10 +9,12 @@ $sidebar-width: 260px;
   flex-direction: column;
 
   .topnav {
-    height: 70px;
+    height: $topnav-height;
+    margin-top: 3px;
   }
 
   .body {
+    font-size: 0.9em;
     height: 100%;
     width: 100%;
     display: flex;
@@ -25,23 +28,31 @@ $sidebar-width: 260px;
     }
     .body-sidenav-collapsed {
       width: 30px !important;
-      min-width: 60px !important;
+      min-width: $topnav-height !important;
     }
     .body-content {
       flex-grow: 1;
+      // margin-top: 3px;
     }
   }
 }
 
 
+
 .navbar-top {
-  height: 70px;
-  background-color: black;
+  height: $topnav-height;
+  background-color: #2f2f2f;
   display: flex;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+
+  .navbar-brand-img{
+    width: 120px;
+    margin-right: 30px;
+    border-radius: 4px;
+  }
 
   .navbar-toggler {
     width: 55px;
@@ -79,11 +90,12 @@ $sidebar-width: 260px;
     // border: solid 1px green;
 
     .navbar-profile {
-      min-width: 40px;
+      min-width: 30px;
       padding: 5px;
+      margin-right: 10px;
       .navbar-profile-image {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         background-color: azure;
         border-radius: 50%;
       }
@@ -130,7 +142,7 @@ $sidebar-width: 260px;
       align-items: center;
       text-align: left;
       padding: 10px;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
       padding-left: 30px;
     }
@@ -173,6 +185,7 @@ $sidebar-width: 260px;
         border-left: solid 6px black;
         background-color: #cdcdcd;
         color: #333333;
+        font-weight: 600;
       }
 
       .menu-icon {
@@ -192,7 +205,7 @@ $sidebar-width: 260px;
         text-align: left;
         padding: 10px;
         padding-left: 20px;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 400;
 
         position: static;
@@ -236,7 +249,7 @@ $sidebar-width: 260px;
     align-items: center;
     // margin: 10px;
     // padding: 10px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
   }
 
