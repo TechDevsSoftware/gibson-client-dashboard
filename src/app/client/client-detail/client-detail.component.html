@@ -24,9 +24,25 @@
 
   <ngb-tab [title]="'Employees (' + client.employees?.length + ')'">
     <ng-template ngbTabContent>
+
+      <div class="table-toolbar">
+        <div class="table-spacer"></div>
+        <div class="table-button">
+          <i class="fas fa-user-plus"></i>&nbsp; Add</div>
+        <div class="table-button">
+          <i class="fas fa-user-plus"></i>&nbsp; Invite</div>
+        <div class="table-button">
+          <i class="fas fa-user-cog"></i>&nbsp; Edit</div>
+        <div class="table-button disabled">
+          <i class="fas fa-user-slash"></i>&nbsp; Disable</div>
+        <div class="table-button disabled">
+          <i class="fas fa-user-times"></i>&nbsp; Delete </div>
+      </div>
+
       <table class="table table-hover">
         <thead>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Username</th>
             <th>Auth Provider</th>
@@ -35,6 +51,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let e of client.employees" (dblclick)="navToDetail(client.id)">
+            <td>
+              <i class="fas fa-user-tie table-icon"></i>
+            </td>
             <td>{{e.firstName}} {{e.lastName}}</td>
             <td>{{e.username}}</td>
             <td>{{e.providerName}}</td>
@@ -48,24 +67,40 @@
 
   <ngb-tab [title]="'Customers (' + client.customers?.length + ')'">
     <ng-template ngbTabContent>
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Auth Provider</th>
-                <th>Validated Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let c of client.customers" (dblclick)="navToDetail(client.id)">
-                <td>{{c.firstName}} {{c.lastName}}</td>
-                <td>{{c.username}}</td>
-                <td>{{c.providerName}}</td>
-                <td>{{c.validatedEmail}}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="table-toolbar">
+        <div class="table-spacer"></div>
+        <div class="table-button">
+          <i class="fas fa-user-plus"></i>&nbsp; Add</div>
+        <div class="table-button">
+          <i class="fas fa-user-plus"></i>&nbsp; Invite</div>
+        <div class="table-button">
+          <i class="fas fa-user-cog"></i>&nbsp; Edit</div>
+        <div class="table-button disabled">
+          <i class="fas fa-user-slash"></i>&nbsp; Disable</div>
+        <div class="table-button disabled">
+          <i class="fas fa-user-times"></i>&nbsp; Delete </div>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Auth Provider</th>
+            <th>Validated Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of client.customers" (dblclick)="navToDetail(client.id)">
+            <td><i class="fas fa-user table-icon"></i></td>
+            <td>{{c.firstName}} {{c.lastName}}</td>
+            <td>{{c.username}}</td>
+            <td>{{c.providerName}}</td>
+            <td>{{c.validatedEmail}}</td>
+          </tr>
+        </tbody>
+      </table>
 
     </ng-template>
   </ngb-tab>
