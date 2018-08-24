@@ -11,6 +11,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() btn1Label: string;
   @Input() btn2Label: string;
   @Input() btn3Label: string;
+  @Input() showBackBtn: boolean = true;
 
   @Output() btn1Click = new EventEmitter();
   @Output() btn2Click = new EventEmitter();

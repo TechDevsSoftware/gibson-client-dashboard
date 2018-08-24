@@ -1,5 +1,5 @@
 <div class="page-menu">
-  <div class="page-back" (click)="navBack()">
+  <div class="page-back" (click)="navBack()" *ngIf="showBackBtn">
     <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
   </div>
   <div class="page-breadcrumb">
