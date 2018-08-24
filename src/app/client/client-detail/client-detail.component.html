@@ -6,14 +6,33 @@
   <br>
   <form *ngIf="client">
 
-    <div class="form-group">
-      <label for="name">Business Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Business Name" name="name" [(ngModel)]="client.name">
-    </div>
+    <div class="row">
+      <div class="col-md-6">
 
-    <div class="form-group">
-      <label for="siteUrl">Site Url</label>
-      <input type="text" class="form-control" id="siteUrl" placeholder="Site Url" name="siteUrl" [(ngModel)]="client.siteUrl">
+        <div class="form-group">
+          <label for="name">Business Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Business Name" name="name" [(ngModel)]="client.name">
+        </div>
+
+        <div class="form-group">
+          <label for="siteUrl">Site Url</label>
+          <input type="text" class="form-control" id="siteUrl" placeholder="Site Url" name="siteUrl" [(ngModel)]="client.siteUrl">
+        </div>
+
+      </div>
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="name">Client Id</label>
+          <input type="text" class="form-control" readonly id="id" placeholder="ClientId" name="id" [(ngModel)]="client.id">
+        </div>
+
+        <div class="form-group">
+          <label for="siteUrl">Client API Key</label>
+          <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="siteUrl" [(ngModel)]="client.clientApiKey">
+        </div>
+
+      </div>
     </div>
 
   </form>
@@ -93,7 +112,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let c of client.customers" (dblclick)="navToDetail(client.id)">
-            <td><i class="fas fa-user table-icon"></i></td>
+            <td>
+              <i class="fas fa-user table-icon"></i>
+            </td>
             <td>{{c.firstName}} {{c.lastName}}</td>
             <td>{{c.username}}</td>
             <td>{{c.providerName}}</td>
