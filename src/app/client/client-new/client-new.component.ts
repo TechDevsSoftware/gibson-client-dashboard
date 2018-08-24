@@ -1,22 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../client.service';
-import { ClientRegistration } from '../client.model';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ClientService } from "../client.service";
+import { ClientRegistration } from "../../app/app.model";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-client-new',
-  templateUrl: './client-new.component.html',
-  styleUrls: ['./client-new.component.scss']
+  selector: "app-client-new",
+  templateUrl: "./client-new.component.html",
+  styleUrls: ["./client-new.component.scss"]
 })
 export class ClientNewComponent implements OnInit {
-
   clientReg: ClientRegistration;
   errMessage: string;
 
-  constructor(
-    private clientService: ClientService,
-    private router: Router
-  ) { }
+  constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit() {
     this.resetForm();
@@ -35,5 +31,4 @@ export class ClientNewComponent implements OnInit {
       this.errMessage = error.message;
     }
   }
-
 }

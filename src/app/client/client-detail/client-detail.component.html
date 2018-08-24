@@ -48,7 +48,7 @@
         <div class="table-spacer"></div>
         <div class="table-button">
           <i class="fas fa-user-plus"></i>&nbsp; Add</div>
-        <div class="table-button">
+        <div class="table-button" [routerLink]="['/clients',client.id, 'employees', 'invite']">
           <i class="fas fa-user-plus"></i>&nbsp; Invite</div>
         <div class="table-button">
           <i class="fas fa-user-cog"></i>&nbsp; Edit</div>
@@ -64,17 +64,19 @@
             <th></th>
             <th>Name</th>
             <th>Username</th>
+            <th>Status</th>
             <th>Auth Provider</th>
             <th>Validated Email</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let e of client.employees" (dblclick)="navToDetail(client.id)">
+          <tr *ngFor="let e of client.employees">
             <td>
               <i class="fas fa-user-tie table-icon"></i>
             </td>
             <td>{{e.firstName}} {{e.lastName}}</td>
             <td>{{e.username}}</td>
+            <td>{{e.status}}</td>
             <td>{{e.providerName}}</td>
             <td>{{e.validatedEmail}}</td>
           </tr>
@@ -111,7 +113,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of client.customers" (dblclick)="navToDetail(client.id)">
+          <tr *ngFor="let c of client.customers">
             <td>
               <i class="fas fa-user table-icon"></i>
             </td>

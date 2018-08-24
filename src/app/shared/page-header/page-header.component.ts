@@ -1,27 +1,32 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-page-header',
-  templateUrl: './page-header.component.html',
-  styleUrls: ['./page-header.component.scss']
+  selector: "app-page-header",
+  templateUrl: "./page-header.component.html",
+  styleUrls: ["./page-header.component.scss"]
 })
 export class PageHeaderComponent implements OnInit {
+  @Input()
+  breadcrumb: string;
+  @Input()
+  btn1Label: string;
+  @Input()
+  btn2Label: string;
+  @Input()
+  btn3Label: string;
+  @Input()
+  showBackBtn = true;
 
-  @Input() breadcrumb: string;
-  @Input() btn1Label: string;
-  @Input() btn2Label: string;
-  @Input() btn3Label: string;
-  @Input() showBackBtn: boolean = true;
+  @Output()
+  btn1Click = new EventEmitter();
+  @Output()
+  btn2Click = new EventEmitter();
+  @Output()
+  btn3Click = new EventEmitter();
 
-  @Output() btn1Click = new EventEmitter();
-  @Output() btn2Click = new EventEmitter();
-  @Output() btn3Click = new EventEmitter();
+  constructor() {}
 
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   navBack() {
     window.history.back();
@@ -38,5 +43,4 @@ export class PageHeaderComponent implements OnInit {
   btn3() {
     this.btn3Click.emit();
   }
-
 }

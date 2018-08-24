@@ -10,7 +10,7 @@ import { SharedModule } from "../shared/shared.module";
 import { ClientModule } from "../client/client.module";
 import { NgHttpLoaderModule } from "ng-http-loader";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
+import { EmployeeModule } from "../employee/employee.module";
 
 @NgModule({
   declarations: [AppComponent, AppSidebarComponent, AppNavbarComponent],
@@ -21,7 +21,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     SharedModule,
     ClientModule,
     NgHttpLoaderModule,
-    NgbModule
+    NgbModule,
+    EmployeeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

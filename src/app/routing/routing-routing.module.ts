@@ -4,6 +4,7 @@ import { PageComponent } from "../shared/page/page.component";
 import { ClientListComponent } from "../client/client-list/client-list.component";
 import { ClientNewComponent } from "../client/client-new/client-new.component";
 import { ClientDetailComponent } from "../client/client-detail/client-detail.component";
+import { EmployeeInviteComponent } from "../employee/employee-invite/employee-invite.component";
 
 const routes: Routes = [
   { path: "", component: PageComponent },
@@ -15,11 +16,15 @@ const routes: Routes = [
   { path: "notifications", component: PageComponent },
   { path: "clients", component: ClientListComponent },
   { path: "clients/new", component: ClientNewComponent },
-  { path: "clients/:id", component: ClientDetailComponent },
+  { path: "clients/:clientId", component: ClientDetailComponent },
+  {
+    path: "clients/:clientId/employees/invite",
+    component: EmployeeInviteComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RoutingRoutingModule { }
+export class RoutingRoutingModule {}

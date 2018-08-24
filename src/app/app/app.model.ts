@@ -6,6 +6,7 @@ export class ClientRegistration {
 export class Client {
   id: string;
   name: string;
+  clientApikey: string;
   siteUrl: string;
   employees: EmployeeProfile[];
   customers: CustomerProfile[];
@@ -29,6 +30,19 @@ export abstract class AuthUserProfile {
   emailAddress: string;
   aggreedToTerms: boolean;
   validatedEmail: boolean;
+  providerName: string;
+  status: string;
+}
+
+export class AuthUserRegistration {
+  emailAddress: string;
+  firstName: string;
+  lastName: string;
+  aggreedToTerms: boolean;
+  providerName: string;
+  providerId: string;
+  password: string;
+  changePasswordOnFirstLogin: boolean;
 }
 
 export class EmployeeProfile extends AuthUserProfile {
@@ -66,4 +80,11 @@ export class MotResult {
   odometerResultType: string;
   motTestNumber: string;
   rfrAndComments: any[];
+}
+
+export class AuthUserInvitationRequest {
+  email: string;
+  firstName: string;
+  message: string;
+  lastName: string;
 }
