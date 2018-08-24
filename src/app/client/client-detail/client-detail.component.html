@@ -1,0 +1,76 @@
+<app-page-header *ngIf="client.name" [breadcrumb]="'/Home/Clients/' + client.name" btn1Label="Save Changes" (btn1Click)="saveChanges()"></app-page-header>
+
+<div class="page-body">
+
+  <h2>{{client?.name}}</h2>
+  <br>
+  <form *ngIf="client">
+
+    <div class="form-group">
+      <label for="name">Business Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Business Name" name="name" [(ngModel)]="client.name">
+    </div>
+
+    <div class="form-group">
+      <label for="siteUrl">Site Url</label>
+      <input type="text" class="form-control" id="siteUrl" placeholder="Site Url" name="siteUrl" [(ngModel)]="client.siteUrl">
+    </div>
+
+  </form>
+
+  <br>
+
+
+</div>
+
+<ngb-tabset *ngIf="client">
+
+  <ngb-tab [title]="'Employees (' + client.employees?.length + ')'">
+    <ng-template ngbTabContent>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Auth Provider</th>
+            <th>Validated Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of client.employees" (dblclick)="navToDetail(client.id)">
+            <td>{{e.firstName}} {{e.lastName}}</td>
+            <td>{{e.username}}</td>
+            <td>{{e.providerName}}</td>
+            <td>{{e.validatedEmail}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab [title]="'Customers (' + client.customers?.length + ')'">
+    <ng-template ngbTabContent>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Auth Provider</th>
+                <th>Validated Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of client.customers" (dblclick)="navToDetail(client.id)">
+                <td>{{c.firstName}} {{c.lastName}}</td>
+                <td>{{c.username}}</td>
+                <td>{{c.providerName}}</td>
+                <td>{{c.validatedEmail}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+    </ng-template>
+  </ngb-tab>
+
+</ngb-tabset>

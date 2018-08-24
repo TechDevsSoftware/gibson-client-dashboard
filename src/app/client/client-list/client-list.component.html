@@ -1,0 +1,22 @@
+<app-page-header
+[breadcrumb]="'/Home/Clients/'"
+btn1Label="Refresh"
+(btn1Click)="loadData()"
+btn2Label="Add Client"
+(btn2Click)="addClient()"
+></app-page-header>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Site URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients" (dblclick)="navToDetail(client.id)">
+      <td>{{client.name}}</td>
+      <td>{{client.siteUrl}}</td>
+    </tr>
+  </tbody>
+</table>

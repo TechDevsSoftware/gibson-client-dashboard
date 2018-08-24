@@ -1,10 +1,10 @@
 <div class="sidebar">
 
   <div class="sidebar-picker">
-    <span class="sidebar-picker-label" *ngIf="!collapsed">123 Dealership</span>
-    <div class="sidebar-icon-container" *ngIf="!collapsed">
+    <!-- <span class="sidebar-picker-label" *ngIf="!collapsed">123 Dealership</span> -->
+    <!-- <div class="sidebar-icon-container" *ngIf="!collapsed">
       <i class="sidebar-picker-icon fa fa-caret-down fa-15x"></i>
-    </div>
+    </div> -->
   </div>
 
   <ul class="sidebar-menu" [ngClass]="{'collapsed': collapsed}">
@@ -13,6 +13,12 @@
         <i class="fa fa-15x fa-dashboard"></i>
       </div>
       <span class="menu-label">Dashboard</span>
+    </li>
+    <li routerLink="/clients" routerLinkActive="active">
+      <div class="menu-icon">
+        <i class="fa fa-15x fa-dashboard"></i>
+      </div>
+      <span class="menu-label">Clients</span>
     </li>
     <li routerLink="/employees" routerLinkActive="active">
       <div class="menu-icon">

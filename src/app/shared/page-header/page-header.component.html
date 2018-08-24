@@ -1,0 +1,15 @@
+<div class="page-menu">
+  <div class="page-back" (click)="navBack()">
+    <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+  </div>
+  <div class="page-breadcrumb">
+    <span class="">{{breadcrumb}}</span>
+  </div>
+  <div class="page-spacer"></div>
+  <div class="page-buttons">
+    <div class="page-buttons-spacer"></div>
+    <div class="page-button" (click)="btn1()" *ngIf="btn1Label">{{btn1Label}}</div>
+    <div class="page-button" (click)="btn2()" *ngIf="btn2Label">{{btn2Label}}</div>
+    <div class="page-button" (click)="btn3()" *ngIf="btn3Label">{{btn3Label}}</div>
+  </div>
+</div>

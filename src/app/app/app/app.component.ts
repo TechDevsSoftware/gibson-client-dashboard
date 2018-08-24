@@ -1,12 +1,15 @@
 import { Component, HostListener } from '@angular/core';
+import { Spinkit } from 'ng-http-loader';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public spinkit = Spinkit;
   title = 'gibson-client-dashboard';
-  sidebarCollapsed: boolean = true;
+  sidebarCollapsed: boolean = false;
   innerWidth: any;
 
   @HostListener('window:resize', ['$event'])

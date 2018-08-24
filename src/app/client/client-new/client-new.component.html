@@ -1,0 +1,18 @@
+<app-page-header [breadcrumb]="'/Home/Clients/New'" btn2Label="Add Client" (btn2Click)="addClient()" btn1Label="Reset Form" (btn1Click)="resetForm()"></app-page-header>
+
+<div class="page-body">
+
+  <h2>Add New Client</h2>
+  <br>
+  <form>
+    <div class="form-group">
+      <label for="name">Business Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Business Name" name="name" [(ngModel)]="clientReg.name">
+    </div>
+    <div class="form-group">
+      <label for="siteUrl">Site Url</label>
+      <input type="text" class="form-control" id="siteUrl" placeholder="Site Url" name="siteUrl" [(ngModel)]="clientReg.siteUrl">
+    </div>
+  </form>
+
+</div>

@@ -5,13 +5,12 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app/app.component";
 import { AppSidebarComponent } from "./app-sidebar/app-sidebar.component";
 import { AppNavbarComponent } from "./app-navbar/app-navbar.component";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import { RoutingModule } from "../routing/routing.module";
 import { SharedModule } from "../shared/shared.module";
-// Add an icon to the library for convenient access in other components
-library.add(fas);
+import { ClientModule } from "../client/client.module";
+import { NgHttpLoaderModule } from "ng-http-loader";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
 
 @NgModule({
   declarations: [AppComponent, AppSidebarComponent, AppNavbarComponent],
@@ -19,8 +18,10 @@ library.add(fas);
     BrowserModule,
     RoutingModule,
     RouterModule,
-    FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    ClientModule,
+    NgHttpLoaderModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

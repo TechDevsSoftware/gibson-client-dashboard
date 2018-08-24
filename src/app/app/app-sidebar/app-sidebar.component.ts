@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faCaretDown, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
