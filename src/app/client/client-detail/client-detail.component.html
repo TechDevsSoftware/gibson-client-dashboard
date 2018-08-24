@@ -29,7 +29,7 @@
 
         <div class="form-group">
           <label for="siteUrl">Client API Key</label>
-          <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="siteUrl" [(ngModel)]="client.clientApiKey">
+          <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="apiKey" [(ngModel)]="client.clientApiKey">
         </div>
 
       </div>
@@ -123,6 +123,28 @@
         </tbody>
       </table>
 
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab title="Billing">
+    <ng-template ngbTabContent>
+      <div class="content">
+        <h3>Billing Configuration</h3>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Theme">
+    <ng-template ngbTabContent>
+      <div class="content">
+        <h3>Default Client Theme</h3>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Preferences">
+    <ng-template ngbTabContent>
+      <div class="content">
+        <h3>Preferences</h3>
+      </div>
     </ng-template>
   </ngb-tab>
 

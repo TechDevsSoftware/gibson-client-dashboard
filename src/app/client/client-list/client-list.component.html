@@ -11,12 +11,16 @@ btn2Label="Add Client"
     <tr>
       <th>Name</th>
       <th>Site URL</th>
+      <th>Subscription Plan</th>
+      <th>Registed On</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let client of clients" (dblclick)="navToDetail(client.id)">
       <td>{{client.name}}</td>
       <td>{{client.siteUrl}}</td>
+      <td>Standard Pay Monthly</td>
+      <td>24th Aug 2018</td>
     </tr>
   </tbody>
 </table>
