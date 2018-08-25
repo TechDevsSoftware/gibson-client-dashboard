@@ -5,6 +5,7 @@ import { ClientListComponent } from "../client/client-list/client-list.component
 import { ClientNewComponent } from "../client/client-new/client-new.component";
 import { ClientDetailComponent } from "../client/client-detail/client-detail.component";
 import { EmployeeInviteComponent } from "../employee/employee-invite/employee-invite.component";
+import { EmployeeInviteRegistrationComponent } from "../employee/employee-invite-registration/employee-invite-registration.component";
 
 const routes: Routes = [
   { path: "", component: PageComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   {
     path: "clients/:clientId/employees/invite",
     component: EmployeeInviteComponent
-  }
+  },
+  { path: "clients/:clientId/employees/invite/:inviteKey", component: EmployeeInviteRegistrationComponent }
 ];
 
 @NgModule({

@@ -4,7 +4,8 @@ import { environment } from "../../environments/environment";
 import {
   AuthUserRegistration,
   EmployeeProfile,
-  AuthUserInvitationRequest
+  AuthUserInvitationRequest,
+  AuthUserInviteAcceptRequest
 } from "../app/app.model";
 
 @Injectable({
@@ -33,6 +34,39 @@ export class EmployeeService {
       .post(`${environment.apiRoot}/api/v1/employees/account/invite`, invite, {
         headers: headers
       })
+      .toPromise();
+  }
+
+  public userProfileFromInviteKey(
+    inviteKey: string,
+    clientId: string
+  ): Promise<EmployeeProfile> {
+    const headers = new HttpHeaders().set("TechDevs-ClientId", clientId);
+    return this.http
+      .get<EmployeeProfile>(
+        `${
+          environment.apiRoot
+        }/api/v1/employees/account/invite/profile/${inviteKey}`,
+        {
+          headers: headers
+        }
+      )
+      .toPromise();
+  }
+
+  public completeRegistration(
+    reg: AuthUserInviteAcceptRequest,
+    clientId: string
+  ): Promise<EmployeeProfile> {
+    const headers = new HttpHeaders().set("TechDevs-ClientId", clientId);
+    return this.http
+      .post<EmployeeProfile>(
+        `${environment.apiRoot}/api/v1/employees/account/invite/complete`,
+        reg,
+        {
+          headers: headers
+        }
+      )
       .toPromise();
   }
 }

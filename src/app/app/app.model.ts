@@ -88,3 +88,9 @@ export class AuthUserInvitationRequest {
   message: string;
   lastName: string;
 }
+
+export class AuthUserInviteAcceptRequest {
+  email: string;
+  inviteKey: string;
+  password: string;
+}
