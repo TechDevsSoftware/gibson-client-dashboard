@@ -30,11 +30,13 @@ export class EmployeeInviteComponent implements OnInit {
 
   resetForm() {
     this.invite = new AuthUserInvitationRequest();
+    this.invite.clientName = this.client.name;
   }
 
   async getClientData() {
     try {
       this.client = await this.clientService.getClient(this.clientId);
+      this.resetForm();
     } catch (error) {
       this.errMessage = error.message;
     }

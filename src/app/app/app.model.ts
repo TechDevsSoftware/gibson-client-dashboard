@@ -87,6 +87,7 @@ export class AuthUserInvitationRequest {
   firstName: string;
   message: string;
   lastName: string;
+  clientName: string;
 }
 
 export class AuthUserInviteAcceptRequest {

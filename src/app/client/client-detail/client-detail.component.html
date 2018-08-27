@@ -50,6 +50,8 @@
           <i class="fas fa-user-plus"></i>&nbsp; Add</div>
         <div class="table-button" [routerLink]="['/clients',client.id, 'employees', 'invite']">
           <i class="fas fa-user-plus"></i>&nbsp; Invite</div>
+        <div class="table-button" *ngIf="employee?.status == 'Invited - Pending'" (click)="resendInvite(employee)">
+          <i class="fas fa-user-plus"></i>&nbsp; Re-Send Invite</div>
         <div class="table-button">
           <i class="fas fa-user-cog"></i>&nbsp; Edit</div>
         <div class="table-button disabled">
@@ -57,7 +59,6 @@
         <div class="table-button disabled">
           <i class="fas fa-user-times"></i>&nbsp; Delete </div>
       </div>
-
       <table class="table table-hover">
         <thead>
           <tr>
@@ -70,7 +71,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let e of client.employees">
+          <tr *ngFor="let e of client.employees" (click)="employee = e">
             <td>
               <i class="fas fa-user-tie table-icon"></i>
             </td>

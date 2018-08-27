@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   Client,
   AuthUserInviteAcceptRequest,
@@ -25,7 +25,8 @@ export class EmployeeInviteRegistrationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private clientService: ClientService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private router: Router
   ) {
     this.clientId = this.route.snapshot.params["clientId"];
     this.inviteKey = this.route.snapshot.params["inviteKey"];
@@ -56,6 +57,10 @@ export class EmployeeInviteRegistrationComponent implements OnInit {
   }
 
   async completeRegistration() {
-    const result = await this.employeeService.completeRegistration(this.req, this.clientId);
+    const result = await this.employeeService.completeRegistration(
+      this.req,
+      this.clientId
+    );
+    this.router.navigate(["/clients", this.clientId]);
   }
 }

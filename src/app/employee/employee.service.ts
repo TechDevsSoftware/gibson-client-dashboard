@@ -69,4 +69,17 @@ export class EmployeeService {
       )
       .toPromise();
   }
+
+  public resendInvitation(email: string, clientId: string) {
+    const headers = new HttpHeaders().set("TechDevs-ClientId", clientId);
+    return this.http
+      .post<EmployeeProfile>(
+        `${environment.apiRoot}/api/v1/employees/account/invite/resend/${email}`,
+        {},
+        {
+          headers: headers
+        }
+      )
+      .toPromise();
+  }
 }
