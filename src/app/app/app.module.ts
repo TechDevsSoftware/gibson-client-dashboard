@@ -11,6 +11,11 @@ import { ClientModule } from "../client/client.module";
 import { NgHttpLoaderModule } from "ng-http-loader";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { EmployeeModule } from "../employee/employee.module";
+import { CoreModule } from "../core/core.module";
+import { AuthServiceConfig, AuthService } from "angularx-social-login";
+import { provideConfig } from "./social-auth.config";
+import { AccountModule } from "../account/account.module";
+import { TechDevsAuthService } from "../core/services/techdevs-auth.service";
 
 @NgModule({
   declarations: [AppComponent, AppSidebarComponent, AppNavbarComponent],
@@ -18,13 +23,22 @@ import { EmployeeModule } from "../employee/employee.module";
     BrowserModule,
     RoutingModule,
     RouterModule,
+    CoreModule,
     SharedModule,
     ClientModule,
     NgHttpLoaderModule,
     NgbModule,
-    EmployeeModule
+    EmployeeModule,
+    AccountModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    },
+    AuthService,
+    TechDevsAuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

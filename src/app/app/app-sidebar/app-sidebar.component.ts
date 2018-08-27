@@ -1,17 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { TechDevsAuthService } from "../../core/services/techdevs-auth.service";
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './app-sidebar.component.html',
-  styleUrls: ['./app-sidebar.component.scss']
+  selector: "app-sidebar",
+  templateUrl: "./app-sidebar.component.html",
+  styleUrls: ["./app-sidebar.component.scss"]
 })
 export class AppSidebarComponent implements OnInit {
+  @Input()
+  collapsed = true;
 
-  @Input() collapsed: boolean = true;
+  constructor(private authService: TechDevsAuthService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  logout() {
+    this.authService.logout();
   }
-
 }
