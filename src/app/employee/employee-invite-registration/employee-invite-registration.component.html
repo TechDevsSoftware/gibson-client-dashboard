@@ -1,0 +1,64 @@
+<app-page-header [showBackBtn]="false"></app-page-header>
+
+<div class="page-body" *ngIf="client">
+
+  <h2>Complete Registration with {{client.name}}</h2>
+  <br>
+
+  <form *ngIf="client && profile">
+
+    <div class="alert alert-warning" role="alert">
+      Please set your password for your {{client.name}} account.
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control form-control-sm" disabled id="firstName" placeholder="First Name" name="firstName"
+            [(ngModel)]="profile.firstName">
+        </div>
+      </div>
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control form-control-sm" disabled id="lastName" placeholder="Last Name" name="lastName" [(ngModel)]="profile.lastName">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control form-control-sm" disabled id="email" placeholder="Email" name="email" [(ngModel)]="profile.emailAddress">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="firstName">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password" [(ngModel)]="req.password">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="cPassword" placeholder="Confirm Password" name="cPassword" [(ngModel)]="confirmPassword">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-success btn-lg btn-block" (click)="completeRegistration()">Complete Registration</button>
+
+  </form>
+
+</div>

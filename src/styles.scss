@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 // @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "./assets/bootstrap.css";
+
+@import "./assets/_variables.scss";
+// @import "~bootswatch/dist/materia/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/materia/bootswatch";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "./assets/dashboard.scss";
 @import "./assets/dashboard-mobile.scss";

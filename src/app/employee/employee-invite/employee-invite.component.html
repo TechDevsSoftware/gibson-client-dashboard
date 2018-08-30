@@ -1,0 +1,31 @@
+<app-page-header *ngIf="client" [breadcrumb]="'/Home/Clients/' + client.name + '/Employees/New'" btn1Label="Invite Employee"
+  (btn1Click)="inviteEmployee()"></app-page-header>
+
+<div class="page-body" *ngIf="client">
+
+  <h2>Invite Employee to {{client.name}}</h2>
+  <br>
+  <form>
+
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" [(ngModel)]="invite.firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" [(ngModel)]="invite.lastName">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="invite.email">
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <input type="text" class="form-control" id="message" placeholder="Message" name="message" [(ngModel)]="invite.message">
+    </div>
+
+  </form>
+
+</div>
