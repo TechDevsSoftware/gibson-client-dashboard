@@ -4,12 +4,13 @@
 
 
 <div class="top-container">
-  <div class="topnav">
+  <div class="topnav" [ngClass]="{'open': isMobile}">
     <app-navbar [sidebarCollapsed]="sidebarCollapsed" (toggleSidebar)="sidebarCollapsed = !sidebarCollapsed"></app-navbar>
+    <app-sidebar *ngIf="isMobile" [isMobile]="isMobile" [collapsed]="sidebarCollapsed"></app-sidebar>
   </div>
   <div class="body">
     <div class="body-sidenav" [ngClass]="{'body-sidenav-collapsed': sidebarCollapsed}">
-      <app-sidebar [collapsed]="sidebarCollapsed"></app-sidebar>
+      <app-sidebar *ngIf="!isMobile" [collapsed]="sidebarCollapsed"></app-sidebar>
     </div>
     <div class="body-content">
       <router-outlet></router-outlet>

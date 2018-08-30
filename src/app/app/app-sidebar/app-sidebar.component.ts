@@ -7,11 +7,23 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AppSidebarComponent implements OnInit {
 
+  @Input() isMobile: boolean = false;
   @Input() collapsed: boolean = true;
 
-  constructor() { }
+  constructor() {
+
+    this.collapsed = window.innerWidth <= 500;
+
+  }
 
   ngOnInit() {
+  }
+
+  toggleCollapsed() {
+    if (this.isMobile) {
+      this.collapsed = !this.collapsed;
+    }
+
   }
 
 }

@@ -1,67 +1,50 @@
 <div class="sidebar">
 
-  <div class="sidebar-picker">
-    <!-- <span class="sidebar-picker-label" *ngIf="!collapsed">123 Dealership</span> -->
-    <!-- <div class="sidebar-icon-container" *ngIf="!collapsed">
-      <i class="sidebar-picker-icon fa fa-caret-down fa-15x"></i>
-    </div> -->
+  <div class="sidebar-mobile-header">
+    <div class="sidebar-mobile-header-left">
+      This is the sidebar mobile header
+    </div>
+    <div class="sidebar-mobile-spacer"></div>
+    <div class="sidebar-mobile-header-right">
+      <i class="fas fa-bars sidebar-mobile-header-icon" (click)="collapsed = !collapsed"></i>
+    </div>
   </div>
 
-  <ul class="sidebar-menu" [ngClass]="{'collapsed': collapsed}">
-    <li routerLink="/dashboard" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fa fa-15x fa-dashboard"></i>
-      </div>
-      <span class="menu-label">Dashboard</span>
-    </li>
-    <li routerLink="/clients" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fas fa-15x fa-users"></i>
-      </div>
-      <span class="menu-label">Clients</span>
-    </li>
-    <!-- <li routerLink="/employees" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fas fa-15x fa-user-tie"></i>
-      </div>
-      <span class="menu-label">Employees</span>
-    </li>
-    <li routerLink="/customers" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fa fa-15x fa-users"></i>
-      </div>
-      <span class="menu-label">Customers</span>
-    </li>
-    <li routerLink="/offers" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fa fa-15x fa-money"></i>
-      </div>
-      <span class="menu-label">Offers</span>
-    </li>
-    <li routerLink="/notifications" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fa fa-15x fa-envelope"></i>
-      </div>
-      <span class="menu-label">Notifications</span>
-    </li> -->
-  </ul>
+  <div class="sidebar-menu-container" (click)="toggleCollapsed()">
 
-  <div class="sidebar-spacer ">
+    <ul class="sidebar-menu" [ngClass]="{'collapsed': collapsed}">
+      <li routerLink="/dashboard" routerLinkActive="active">
+        <div class="menu-icon">
+          <i class="fa fa-15x fa-dashboard"></i>
+        </div>
+        <span class="menu-label">Dashboard</span>
+      </li>
+      <li routerLink="/clients" routerLinkActive="active">
+        <div class="menu-icon">
+          <i class="fas fa-15x fa-users"></i>
+        </div>
+        <span class="menu-label">Clients</span>
+      </li>
+
+      <li class="sidebar-spacer"></li>
+
+      <li routerLink=" /settings " routerLinkActive="active ">
+        <div class="menu-icon ">
+          <i class="fa fa-15x fa-cog "></i>
+        </div>
+        <span class="menu-label ">Settings</span>
+      </li>
+      <li>
+        <div class="menu-icon ">
+          <i class="fas fa-sign-out-alt fa-15x "></i>
+        </div>
+        <span class="menu-label ">Logout</span>
+      </li>
+    </ul>
+
+    <div class="sidebar-spacer ">
+
+    </div>
 
   </div>
-  <ul class="sidebar-menu" [ngClass]="{'collapsed': collapsed}">
-    <li routerLink="/settings" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fa fa-15x fa-cog"></i>
-      </div>
-      <span class="menu-label">Settings</span>
-    </li>
-    <li>
-      <div class="menu-icon">
-        <i class="fas fa-sign-out-alt fa-15x"></i>
-      </div>
-      <span class="menu-label">Logout</span>
-    </li>
-  </ul>
-
 </div>
