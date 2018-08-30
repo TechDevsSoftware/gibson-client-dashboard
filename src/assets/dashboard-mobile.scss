@@ -1,8 +1,11 @@
-$mobile-break: 500px;
+$mobile-break: 700px;
 @media screen and (max-width: $mobile-break) {
     $topnav-height: 60px;
     $sidebar-button-height: 50px;
-    $sidebar-width: 240px;
+    $sidebar-width: 240px; // Table Padding
+    // td {
+    //     padding: 20px !important;
+    // }
     .top-container {
         // background-color: red;
         height: 100%;
@@ -24,8 +27,8 @@ $mobile-break: 500px;
                 display: none;
             }
             .body-content {
-                flex-grow: 1; // margin-top: 3px;
-                padding: 10px;
+                // flex-grow: 1; // margin-top: 3px;
+                // padding: 10px;
             }
         }
     }
@@ -119,6 +122,88 @@ $mobile-break: 500px;
                         transition: opacity 200ms ease-in;
                     }
                 }
+            }
+        }
+    }
+    .page-menu {
+        height: 40px;
+        border-bottom: solid 1px #7a7a7a;
+        display: flex;
+        flex-direction: row;
+        background-color: $gray-300;
+        .page-back {
+            height: 40px;
+            width: 40px;
+            font-size: 2em; // padding: 5px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+        }
+        .page-spacer {
+            flex-grow: 1;
+        }
+        .page-breadcrumb {
+            display: none;
+        }
+        .page-buttons {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            height: 100%;
+            .page-buttons-spacer {
+                flex-grow: 1;
+            }
+            .page-button {
+                background-color: $gray-400;
+                cursor: pointer;
+                height: 100%;
+                min-width: 100px;
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                text-align: left;
+                padding: 5px;
+                border-left: 1px solid #7a7a7a;
+                border-right: 1px solid #7a7a7a;
+                font-weight: 600;
+                align-items: center;
+                &:hover {
+                    background-color: $gray-500;
+                }
+            }
+        }
+    }
+    .page-body {
+        padding: 20px;
+    }
+    $toolbar-height: 30px;
+    .table-toolbar {
+        min-height: $toolbar-height; // background-color: red;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .table-spacer {
+            flex-grow: 1;
+        }
+        .table-button {
+            display: flex;
+            min-width: 100px;
+            min-height: $toolbar-height;
+            padding-left: 10px;
+            font-weight: 600; // border: 1px solid grey;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            border-top: solid 1px #dee2e6;
+            border-left: solid 1px #dee2e6;
+            &:hover {
+                background-color: #f2f2f2;
+            }
+            &.disabled {
+                cursor: not-allowed;
+                background-color: #f2f2f2;
             }
         }
     }

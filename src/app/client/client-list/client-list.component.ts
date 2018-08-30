@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';
 import { Client } from '../../app/app.model';
 import { Router } from '@angular/router';
+import { MobileService } from '../../core/services/mobile.service';
 
 @Component({
   selector: 'app-client-list',
@@ -13,8 +14,10 @@ export class ClientListComponent implements OnInit {
 
   constructor(
     private clientService: ClientService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private mobileService: MobileService
+  ) {
+  }
 
   async ngOnInit() {
     await this.loadData();

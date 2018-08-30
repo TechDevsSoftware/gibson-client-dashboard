@@ -1,19 +1,18 @@
-import { Component, HostListener } from '@angular/core';
-import { Spinkit } from 'ng-http-loader';
+import { Injectable, HostListener } from "@angular/core";
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
-export class AppComponent {
-  public spinkit = Spinkit;
+@Injectable()
+export class MobileService {
 
-  title = 'gibson-client-dashboard';
   sidebarCollapsed: boolean = false;
-  isMobile: boolean;
+  public isMobile: boolean;
   innerWidth: any;
   mobileBreak = 700;
+
+  constructor() {
+    this.isMobile = window.innerWidth <= this.mobileBreak;
+    if (this.isMobile) this.sidebarCollapsed = true;
+  }
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -32,8 +31,4 @@ export class AppComponent {
     this.innerWidth = window.innerWidth;
   }
 
-  constructor() {
-    this.isMobile = window.innerWidth <= this.mobileBreak;
-    if (this.isMobile) this.sidebarCollapsed = true;
-  }
 }
