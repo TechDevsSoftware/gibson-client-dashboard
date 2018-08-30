@@ -26,10 +26,12 @@ export class AppComponent {
       this.sidebarCollapsed = false;
     }
 
+    if (this.isMobile) this.sidebarCollapsed = true;
+
     this.innerWidth = window.innerWidth;
   }
 
   constructor() {
-      this.isMobile = window.innerWidth <= 500;
+    this.isMobile = window.innerWidth <= 500;
   }
 }

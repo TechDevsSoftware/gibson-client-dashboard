@@ -2,7 +2,7 @@
 
   <div class="sidebar-mobile-header">
     <div class="sidebar-mobile-header-left">
-      This is the sidebar mobile header
+      <span class="sidebar-mobile-title">TechDevs Gibson Console</span>
     </div>
     <div class="sidebar-mobile-spacer"></div>
     <div class="sidebar-mobile-header-right">
@@ -26,7 +26,6 @@
         <span class="menu-label">Clients</span>
       </li>
 
-<<<<<<< HEAD
       <li class="sidebar-spacer"></li>
 
       <li routerLink=" /settings " routerLinkActive="active ">
@@ -35,7 +34,7 @@
         </div>
         <span class="menu-label ">Settings</span>
       </li>
-      <li>
+      <li (click)="logout()">
         <div class="menu-icon ">
           <i class="fas fa-sign-out-alt fa-15x "></i>
         </div>
@@ -44,23 +43,6 @@
     </ul>
 
     <div class="sidebar-spacer ">
-=======
-  </div>
-  <ul class="sidebar-menu" [ngClass]="{'collapsed': collapsed}">
-    <li routerLink="/settings" routerLinkActive="active">
-      <div class="menu-icon">
-        <i class="fa fa-15x fa-cog"></i>
-      </div>
-      <span class="menu-label">Settings</span>
-    </li>
-    <li (click)="logout()">
-      <div class="menu-icon">
-        <i class="fas fa-sign-out-alt fa-15x"></i>
-      </div>
-      <span class="menu-label">Logout</span>
-    </li>
-  </ul>
->>>>>>> ffbbf5a30d7c618eb394c09bc9b16b7193b64570
 
     </div>
 

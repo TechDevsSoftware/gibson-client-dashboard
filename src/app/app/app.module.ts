@@ -41,4 +41,4 @@ import { TechDevsAuthService } from "../core/services/techdevs-auth.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

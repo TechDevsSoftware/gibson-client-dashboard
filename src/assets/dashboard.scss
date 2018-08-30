@@ -21,8 +21,8 @@ $mobile-break: 500px;
                 width: $sidebar-width;
                 min-width: $sidebar-width;
                 height: 100%;
-                -webkit-transition: width 400ms;
-                transition: width 400ms;
+                // -webkit-transition: width 400ms;
+                // transition: width 400ms;
             }
             .body-sidenav-collapsed {
                 width: 30px !important;
@@ -93,11 +93,9 @@ $mobile-break: 500px;
         display: flex;
         border-right: 1px solid #a9a9a9;
         flex-direction: column;
-
         .sidebar-mobile-header {
-          display: none;
+            display: none;
         }
-
         .sidebar-picker {
             height: $sidebar-button-height;
             width: 100%;
@@ -131,57 +129,63 @@ $mobile-break: 500px;
         .sidebar-spacer {
             flex-grow: 1;
         }
-        .sidebar-menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            color: #666666;
-            &.collapsed {
-                li {
-                    padding-left: 0;
-                    .menu-label {
-                        position: absolute;
-                        opacity: 0;
-                    }
-                }
-            }
-            li {
-                width: 100%;
-                height: $sidebar-button-height;
+        .sidebar-menu-container {
+          height: 100%;
+            .sidebar-menu {
+                list-style: none;
+                margin: 0;
                 padding: 0;
-                cursor: pointer;
-                display: flex;
-                &:hover {
-                    background-color: #dbdbdb;
-                }
-                &.active {
-                    border-left: solid 6px black;
-                    background-color: #cdcdcd;
-                    color: #333333;
-                    font-weight: 600;
-                }
-                .menu-icon {
-                    width: 60px;
-                    text-align: center;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    i {
-                        width: 100%;
+                color: #666666;
+                &.collapsed {
+                    li {
+                        padding-left: 0;
+                        .menu-label {
+                            position: absolute;
+                            opacity: 0;
+                        }
                     }
                 }
-                .menu-label {
+                li {
+                    width: 100%;
+                    height: $sidebar-button-height;
+                    padding: 0;
+                    cursor: pointer;
                     display: flex;
-                    flex-grow: 1;
-                    align-items: center;
-                    text-align: left;
-                    padding: 10px;
-                    padding-left: 20px;
-                    font-size: 15px;
-                    font-weight: 400;
-                    position: static;
-                    opacity: 1;
-                    transition: opacity 200ms ease-in;
+                    &:hover {
+                        background-color: #dbdbdb;
+                    }
+                    &.active {
+                        border-left: solid 6px $primary;
+                        background-color: #cdcdcd;
+                        color: #333333;
+                        font-weight: 600;
+                    }
+                    &.sidebar-spacer {
+                      flex-grow: 1;
+                    }
+                    .menu-icon {
+                        width: 60px;
+                        text-align: center;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        i {
+                            width: 100%;
+                        }
+                    }
+                    .menu-label {
+                        display: flex;
+                        flex-grow: 1;
+                        align-items: center;
+                        text-align: left;
+                        padding: 10px;
+                        padding-left: 20px;
+                        font-size: 15px;
+                        font-weight: 400;
+                        position: static;
+                        opacity: 1;
+                        // transition: opacity 200ms ease-in;
+                    }
                 }
             }
         }
