@@ -47,6 +47,7 @@ export class TechDevsAuthService {
     const provider = "Google";
     let user: SocialUser;
     try {
+      console.log("Social Auth signin started");
       user = await this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
     } catch (error) {
       console.log("Error signing in with Goolge");
