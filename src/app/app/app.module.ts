@@ -12,10 +12,23 @@ import { NgHttpLoaderModule } from "ng-http-loader";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { EmployeeModule } from "../employee/employee.module";
 import { CoreModule } from "../core/core.module";
-import { AuthServiceConfig, AuthService } from "angularx-social-login";
-import { provideConfig } from "./social-auth.config";
+import { AuthServiceConfig, AuthService, GoogleLoginProvider, SocialLoginModule } from "angularx-social-login";
 import { AccountModule } from "../account/account.module";
 import { TechDevsAuthService } from "../core/services/techdevs-auth.service";
+import { ClientKeyInterceptor } from "../core/interceptors/clientkey.interceptor";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("562400802513-l81m74td45m43m3r8mj9qq3ipdg9o071.apps.googleusercontent.com")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
 
 @NgModule({
   declarations: [AppComponent, AppSidebarComponent, AppNavbarComponent],
@@ -29,7 +42,8 @@ import { TechDevsAuthService } from "../core/services/techdevs-auth.service";
     NgHttpLoaderModule,
     NgbModule,
     EmployeeModule,
-    AccountModule
+    AccountModule,
+    SocialLoginModule
   ],
   providers: [
     {
@@ -37,7 +51,12 @@ import { TechDevsAuthService } from "../core/services/techdevs-auth.service";
       useFactory: provideConfig
     },
     AuthService,
-    TechDevsAuthService
+    TechDevsAuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ClientKeyInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

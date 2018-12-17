@@ -22,7 +22,7 @@ export class TechDevsAuthService {
     private httpClient: HttpClient,
     private socialAuth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   async loginWithEmail(email: string, password: string): Promise<string> {
     this.logout();
@@ -33,19 +33,7 @@ export class TechDevsAuthService {
       password: password
     };
     try {
-      const headers = new HttpHeaders().set(
-        "TechDevs-ClientId",
-        environment.clientId
-      );
-      const token = await this.httpClient
-        .post<string>(
-          `${environment.apiRoot}/api/v1/employee/auth/login`,
-          loginRequest,
-          {
-            headers: headers
-          }
-        )
-        .toPromise();
+      const token = await this.httpClient.post<string>(`${environment.apiRoot}/api/v1/employee/auth/login`, loginRequest, {}).toPromise();
       this.onSuccessfulLogin(token);
       return "Success";
     } catch (error) {
@@ -73,15 +61,8 @@ export class TechDevsAuthService {
       provider: provider,
       providerIdToken: idToken
     };
-
-    const headers = new HttpHeaders().set(
-      "TechDevs-ClientId",
-      environment.clientId
-    );
     const token = await this.httpClient
-      .post<string>(`${environment.apiRoot}/api/v1/employee/auth/login`, loginRequest, {
-        headers: headers
-      })
+      .post<string>(`${environment.apiRoot}/api/v1/employee/auth/login`, loginRequest, {})
       .toPromise();
     this.onSuccessfulLogin(token);
     return "Success";
