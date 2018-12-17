@@ -1,10 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import {
-  AuthService,
-  GoogleLoginProvider,
-  SocialUser
-} from "angularx-social-login";
+import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserProfile } from "../models/auth.models";
 import { Router } from "@angular/router";
 import { environment } from "../../../environments/environment";
