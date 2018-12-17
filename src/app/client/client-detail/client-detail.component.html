@@ -29,7 +29,19 @@
 
         <div class="form-group">
           <label for="siteUrl">Client API Key</label>
-          <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="apiKey" [(ngModel)]="client.clientApiKey">
+          <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="apiKey"
+            [(ngModel)]="client.clientApiKey">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="siteUrl">Short Key</label>
+          <app-edit-text name="shortKey" placeholder="Short Key" [initialState]="initialState?.shortKey" [(ngModel)]="client.shortKey" (onSaveRequest)="save('ShortKey', client.shortKey)"></app-edit-text>
         </div>
 
       </div>

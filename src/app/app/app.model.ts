@@ -6,7 +6,8 @@ export class ClientRegistration {
 export class Client {
   id: string;
   name: string;
-  clientApikey: string;
+  clientApiKey: string;
+  shortKey: string;
   siteUrl: string;
   employees: EmployeeProfile[];
   customers: CustomerProfile[];

@@ -21,6 +21,18 @@ export class ClientService {
     return this.http.get<Client>(`${environment.apiRoot}/api/v1/clients/${clientId}`, { params: params }).toPromise();
   }
 
+  public updateClient(clinetId: string, client: Client): Promise<Client> {
+    return this.http.put<Client>(`${environment.apiRoot}/api/v1/clients`,client).toPromise();
+  }
+
+  public updateClientProperty(clientId: string, propertyPath: string, value: string): Promise<Client> {
+      const body = {
+        "propertyPath": propertyPath,
+        "updateValue": value
+      };
+      return this.http.put<Client>(`${environment.apiRoot}/api/v1/clients/${clientId}`, body).toPromise();
+  }
+
   public createClient(reg: ClientRegistration): Promise<Client> {
     return this.http.post<Client>(`${environment.apiRoot}/api/v1/clients`, reg, {}).toPromise();
   }
