@@ -46,6 +46,12 @@
         </div>
 
       </div>
+      <div class="col-md-6">
+        <label>Links</label>
+        <br>
+        <button class="btn btn-primary btn-lg" type="button" (click)="openCustomerPortal()">Open Customer Portal  &nbsp; <i class="fa fa-external-link"></i> </button>
+
+      </div>
     </div>
 
   </form>
@@ -173,7 +179,8 @@
                 <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamName">
               </td>
               <td>
-                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamValue"  [style.background-color]="cssParamValue">
+                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamValue"
+                  [style.background-color]="cssParamValue">
               </td>
               <td>
                 <button type="button" class="btn btn-sm btn-primary" (click)="setParameter()">Set Parameter</button>

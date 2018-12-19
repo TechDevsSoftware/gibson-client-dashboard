@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiRoot: "http://localhost:5000",
-  clientKey: "techdevs"
+  clientKey: "techdevs",
+  customerPortalRoot: "http://localhost:4201"
 };
 
 /*
