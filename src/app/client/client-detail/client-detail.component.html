@@ -41,7 +41,8 @@
 
         <div class="form-group">
           <label for="siteUrl">Short Key</label>
-          <app-edit-text name="shortKey" placeholder="Short Key" [initialState]="initialState?.shortKey" [(ngModel)]="client.shortKey" (onSaveRequest)="save('ShortKey', client.shortKey)"></app-edit-text>
+          <app-edit-text name="shortKey" placeholder="Short Key" [initialState]="initialState?.shortKey" [(ngModel)]="client.shortKey"
+            (onSaveRequest)="save('ShortKey', client.shortKey)"></app-edit-text>
         </div>
 
       </div>
@@ -152,7 +153,35 @@
   <ngb-tab title="Theme">
     <ng-template ngbTabContent>
       <div class="content">
-        <h3>Default Client Theme</h3>
+
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Parameter</th>
+              <th>Value</th>
+              <th>Commands</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let param of client.clientTheme.parameters">
+              <td>{{param.key}}</td>
+              <td [style.background-color]="param.value"><span class="param-value">{{param.value}}</span></td>
+              <td><button (click)="removeParameter(param)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamName">
+              </td>
+              <td>
+                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamValue"  [style.background-color]="cssParamValue">
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" (click)="setParameter()">Set Parameter</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </ng-template>
   </ngb-tab>

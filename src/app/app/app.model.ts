@@ -6,12 +6,12 @@ export class ClientRegistration {
 export class Client {
   id: string;
   name: string;
+  siteUrl: string;
   clientApiKey: string;
   shortKey: string;
-  siteUrl: string;
+  clientTheme: ClientTheme;
   employees: EmployeeProfile[];
   customers: CustomerProfile[];
-  clientTheme: ClientTheme;
 }
 
 export class ClientTheme {
@@ -21,7 +21,13 @@ export class ClientTheme {
   warningColour: string;
   dangerColour: string;
   logoPath: string;
-  logoData: string;
+  logoData: Blob;
+  parameters: CSSParameter[];
+}
+
+export class CSSParameter {
+  key: string;
+  value: string;
 }
 
 export abstract class AuthUserProfile {

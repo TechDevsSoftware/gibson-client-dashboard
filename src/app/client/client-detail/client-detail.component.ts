@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Client, EmployeeProfile } from "../../app/app.model";
+import { Client, EmployeeProfile, CSSParameter } from "../../app/app.model";
 import { ActivatedRoute, Params } from "@angular/router";
 import { ClientService } from "../client.service";
 import { EmployeeService } from "../../employee/employee.service";
+import { TechDevsClientThemeService } from "../../core/services/techdevs-client-theme.service";
 
 @Component({
   selector: "app-client-detail",
@@ -14,10 +15,14 @@ export class ClientDetailComponent implements OnInit {
   employee: EmployeeProfile;
   initialState: Client = new Client();
 
+  cssParamName: string;
+  cssParamValue: string;
+
   constructor(
     private route: ActivatedRoute,
     private clientService: ClientService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private themeService: TechDevsClientThemeService
   ) {
     this.route.params.subscribe(async params => await this.loadData(params["clientId"]));
   }
@@ -42,5 +47,15 @@ export class ClientDetailComponent implements OnInit {
 
   async resendInvite(employee: EmployeeProfile) {
     await this.employeeService.resendInvitation(employee.emailAddress, this.client.id);
+  }
+
+  async setParameter() {
+    const result = await this.themeService.setParameter(this.client.shortKey, {key: this.cssParamName, value: this.cssParamValue});
+    this.client = result;
+  }
+
+  async removeParameter(param: CSSParameter) {
+    const result = await this.themeService.removeParameter(this.client.shortKey, param.key);
+    this.client = result;
   }
 }

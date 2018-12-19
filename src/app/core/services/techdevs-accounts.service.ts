@@ -16,8 +16,7 @@ export class LoginRequest {
 export class TechDevsAccountsService {
 
   constructor(
-    private httpClient: HttpClient,
-    private router: Router
+    private httpClient: HttpClient
   ) { }
 
   async registerNewUser(reg: UserRegistration): Promise<string> {
@@ -28,7 +27,7 @@ export class TechDevsAccountsService {
     } catch (error) {
       return "Failed to register new user";
     }
-
   }
-
 }
+
+
