@@ -2,5 +2,5 @@ export const environment = {
   production: true,
   apiRoot: "https://techdevs-accounts.azurewebsites.net",
   clientKey: "techdevs",
-  customerPortalRoot: "https://app.techedvs.net"
+  customerPortalRoot: "https://app.techedevs.net"
 };
