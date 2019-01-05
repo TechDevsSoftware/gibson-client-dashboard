@@ -8,6 +8,7 @@ import { EmployeeInviteComponent } from "../employee/employee-invite/employee-in
 import { EmployeeInviteRegistrationComponent } from "../employee/employee-invite-registration/employee-invite-registration.component";
 import { SigninComponent } from "../account/components/signin/signin.component";
 import { AuthGuard } from "../core/guards/auth.guard";
+import { OffersListComponent } from "../offers/components/offers-list/offers-list.component";
 
 const routes: Routes = [
   { path: "", component: SigninComponent },
@@ -38,11 +39,16 @@ const routes: Routes = [
   {
     path: "clients/:clientId/employees/invite/:inviteKey",
     component: EmployeeInviteRegistrationComponent
+  },
+  {
+    path: "clients/:clientId/offers",
+    component: OffersListComponent
   }
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RoutingRoutingModule {}
+export class RoutingRoutingModule { }

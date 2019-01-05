@@ -10,9 +10,23 @@ export class Client {
   clientApiKey: string;
   shortKey: string;
   clientTheme: ClientTheme;
-  employees: EmployeeProfile[];
-  customers: CustomerProfile[];
+  clientData: ClientData;
 }
+
+export class ClientData {
+  basicOffers: BasicOffer[];
+}
+
+export class BasicOffer {
+  id: string;
+  offerCode: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  badge: string;
+  enabled: boolean;
+}
+
 
 export class ClientTheme {
   font: string;

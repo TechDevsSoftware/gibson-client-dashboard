@@ -1,0 +1,24 @@
+<app-page-header *ngIf="client" [breadcrumb]="'/Home/Clients/' + client.name + '/Offers'" btn1Label="Refresh" (btn1Click)="loadData(client.id)"></app-page-header>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cover Image</th>
+      <th>Titile</th>
+      <th>Badge</th>
+      <th>Offer Code</th>
+      <th>Enabled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let offer of client?.clientData?.basicOffers">
+      <td><img [src]="offer?.imageSrc" class="list-image"></td>
+      <td>{{offer.title}}</td>
+      <td>{{offer.badge}}</td>
+      <td>{{offer.enabled}}</td>
+      <td>{{offer.offerCode}}</td>
+    </tr>
+  </tbody>
+</table>

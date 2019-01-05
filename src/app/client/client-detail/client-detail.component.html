@@ -2,60 +2,151 @@
 
 <div class="page-body">
 
-  <h2>{{client?.name}}</h2>
+  <div class="row">
+    <div class="col">
+      <h2>{{client?.name}}</h2>
+    </div>
+    <div class="col">
+      <img [src]="client?.clientTheme?.logoPath" class="brand-image">
+    </div>
+  </div>
   <br>
-  <form *ngIf="client">
 
-    <div class="row">
-      <div class="col-md-6">
+  <mat-accordion *ngIf="client">
 
-        <div class="form-group form-group">
-          <label for="name">Business Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Business Name" name="name" [(ngModel)]="client.name">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Details</mat-panel-title>
+      </mat-expansion-panel-header>
+      <form *ngIf="client">
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <div class="form-group form-group">
+              <label for="name">Business Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Business Name" name="name" [(ngModel)]="client.name">
+            </div>
+
+            <div class="form-group">
+              <label for="siteUrl">Site Url</label>
+              <input type="text" class="form-control" id="siteUrl" placeholder="Site Url" name="siteUrl" [(ngModel)]="client.siteUrl">
+            </div>
+
+          </div>
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label for="name">Client Id</label>
+              <input type="text" class="form-control" readonly id="id" placeholder="ClientId" name="id" [(ngModel)]="client.id">
+            </div>
+
+            <div class="form-group">
+              <label for="siteUrl">Client API Key</label>
+              <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="apiKey"
+                [(ngModel)]="client.clientApiKey">
+            </div>
+
+          </div>
         </div>
 
+        <div class="row">
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label for="siteUrl">Short Key</label>
+              <app-edit-text name="shortKey" placeholder="Short Key" [initialState]="initialState?.shortKey"
+                [(ngModel)]="client.shortKey" (onSaveRequest)="save('ShortKey', client.shortKey)"></app-edit-text>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <label>Links</label>
+            <br>
+            <button class="btn btn-primary btn-lg" type="button" (click)="openCustomerPortal()">Open Customer Portal
+              &nbsp;
+              <i class="fa fa-external-link"></i> </button>
+
+          </div>
+        </div>
+
+      </form>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Theme</mat-panel-title>
+      </mat-expansion-panel-header>
+
+
+      <div class="content">
+
         <div class="form-group">
-          <label for="siteUrl">Site Url</label>
-          <input type="text" class="form-control" id="siteUrl" placeholder="Site Url" name="siteUrl" [(ngModel)]="client.siteUrl">
+          <label for="name">Logo Path</label>
+          <input type="text" class="form-control form-control-sm" placeholder="Logo Path" name="logoPath" [ngModel]="client?.clientTheme?.logoPath"
+            (ngModelChange)="client?.clientTheme.logoPath=$event">
+        </div>
+        <div class="form-group" *ngIf="client?.clientTheme">
+          <label for="name">Font</label>
+          <input type="text" class="form-control form-control-sm" placeholder="Font" name="font" [(ngModel)]="client?.clientTheme.font">
         </div>
 
       </div>
-      <div class="col-md-6">
 
-        <div class="form-group">
-          <label for="name">Client Id</label>
-          <input type="text" class="form-control" readonly id="id" placeholder="ClientId" name="id" [(ngModel)]="client.id">
-        </div>
+      <mat-list>
+          <mat-list-item *ngFor="let param of client?.clientTheme?.parameters">
+            <p mat-line> {{param.key}} </p>
+            <p mat-line> {{param.value}} </p>
+          </mat-list-item>
+        </mat-list>
+      <!-- <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Value</th>
+              <th>Commands</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let param of client?.clientTheme?.parameters">
+              <td>{{param.key}}</td>
+              <td [style.background-color]="param.value"><span class="param-value">{{param.value}}</span></td>
+              <td><button (click)="removeParameter(param)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamName">
+              </td>
+              <td>
+                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamValue"
+                  [style.background-color]="cssParamValue">
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" (click)="setParameter()">Set Parameter</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+   -->
 
-        <div class="form-group">
-          <label for="siteUrl">Client API Key</label>
-          <input type="text" class="form-control" readonly id="apiKey" placeholder="Client API Key" name="apiKey"
-            [(ngModel)]="client.clientApiKey">
-        </div>
 
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-6">
+    </mat-expansion-panel>
 
-        <div class="form-group">
-          <label for="siteUrl">Short Key</label>
-          <app-edit-text name="shortKey" placeholder="Short Key" [initialState]="initialState?.shortKey" [(ngModel)]="client.shortKey"
-            (onSaveRequest)="save('ShortKey', client.shortKey)"></app-edit-text>
-        </div>
+    <!-- <mat-expansion-panel>
 
-      </div>
-      <div class="col-md-6">
-        <label>Links</label>
-        <br>
-        <button class="btn btn-primary btn-lg" type="button" (click)="openCustomerPortal()">Open Customer Portal &nbsp;
-          <i class="fa fa-external-link"></i> </button>
+      <mat-expansion-panel-header>
+        <mat-panel-title></mat-panel-title>
+      </mat-expansion-panel-header>
 
-      </div>
-    </div>
+    </mat-expansion-panel> -->
 
-  </form>
+  </mat-accordion>
+
+
+
 
 </div>
 
@@ -159,38 +250,51 @@
   </ngb-tab>
   <ngb-tab title="Theme">
     <ng-template ngbTabContent>
+
       <div class="content">
 
-        <table class="table table-sm">
-          <thead class="thead-dark">
-            <tr>
-              <th>Parameter</th>
-              <th>Value</th>
-              <th>Commands</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let param of client?.clientTheme?.parameters">
-              <td>{{param.key}}</td>
-              <td [style.background-color]="param.value"><span class="param-value">{{param.value}}</span></td>
-              <td><button (click)="removeParameter(param)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamName">
-              </td>
-              <td>
-                <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamValue"
-                  [style.background-color]="cssParamValue">
-              </td>
-              <td>
-                <button type="button" class="btn btn-sm btn-primary" (click)="setParameter()">Set Parameter</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="form-group">
+          <label for="name">Logo Path</label>
+          <input type="text" class="form-control form-control-sm" placeholder="Logo Path" name="logoPath" [ngModel]="client?.clientTheme?.logoPath"
+            (ngModelChange)="client?.clientTheme.logoPath=$event">
+        </div>
+        <div class="form-group">
+          <label for="name">Font</label>
+          <input type="text" class="form-control form-control-sm" placeholder="Font" name="font" [(ngModel)]="client?.clientTheme.font">
+        </div>
 
       </div>
+
+
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Commands</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let param of client?.clientTheme?.parameters">
+            <td>{{param.key}}</td>
+            <td [style.background-color]="param.value"><span class="param-value">{{param.value}}</span></td>
+            <td><button (click)="removeParameter(param)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamName">
+            </td>
+            <td>
+              <input type="text" class="form-control form-control-sm bordered" [(ngModel)]="cssParamValue"
+                [style.background-color]="cssParamValue">
+            </td>
+            <td>
+              <button type="button" class="btn btn-sm btn-primary" (click)="setParameter()">Set Parameter</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Preferences">

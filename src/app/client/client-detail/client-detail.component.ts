@@ -17,7 +17,10 @@ export class ClientDetailComponent implements OnInit {
   initialState: Client = new Client();
 
   cssParamName: string;
-  cssParamValue: string;
+  cssParamValue: string;ß
+
+  displayedColumns: string[] = ['key', 'value'];
+  expandedElement: Client | null;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +40,8 @@ export class ClientDetailComponent implements OnInit {
 
   async saveChanges() {
     console.log("UpdateEntity", this.client);
+    const result = await this.clientService.updateClient(this.client.id, this.client);
+    this.client = result;
   }
 
   async save(propertyPath: string, value: string) {

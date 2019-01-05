@@ -29,6 +29,7 @@ $mobile-break: 700px;
             }
             .body-content {
                 flex-grow: 1; // margin-top: 3px;
+                overflow: auto;
             }
         }
     }

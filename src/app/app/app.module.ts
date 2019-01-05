@@ -17,6 +17,9 @@ import { AccountModule } from "../account/account.module";
 import { TechDevsAuthService } from "../core/services/techdevs-auth.service";
 import { ClientKeyInterceptor } from "../core/interceptors/clientkey.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { OffersModule } from "../offers/offers.module";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 let config = new AuthServiceConfig([
   {
@@ -28,7 +31,6 @@ let config = new AuthServiceConfig([
 export function provideConfig() {
   return config;
 }
-
 
 @NgModule({
   declarations: [AppComponent, AppSidebarComponent, AppNavbarComponent],
@@ -43,7 +45,9 @@ export function provideConfig() {
     NgbModule,
     EmployeeModule,
     AccountModule,
-    SocialLoginModule
+    SocialLoginModule,
+    OffersModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
