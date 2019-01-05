@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../client.service';
-import { Client } from '../../app/app.model';
 import { Router } from '@angular/router';
 import { MobileService } from '../../core/services/mobile.service';
+import { ClientService } from 'src/app/api/services';
+import { Client } from 'src/app/api/models';
 
 @Component({
   selector: 'app-client-list',
@@ -24,7 +24,7 @@ export class ClientListComponent implements OnInit {
   }
 
   async loadData() {
-    this.clients = await this.clientService.getClients();
+    this.clients = await this.clientService.GetClients().toPromise();
     console.log(this.clients);
   }
 

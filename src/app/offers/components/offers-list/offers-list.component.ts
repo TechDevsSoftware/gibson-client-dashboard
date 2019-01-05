@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from 'src/app/app/app.model';
-import { ClientService } from 'src/app/client/client.service';
 import { ActivatedRoute } from '@angular/router';
+import { ClientService } from 'src/app/api/services';
+import { Client } from 'src/app/api/models';
 
 @Component({
   selector: 'app-offers-list',
@@ -15,7 +15,7 @@ export class OffersListComponent implements OnInit {
   constructor(
     private clientService: ClientService,
     private route: ActivatedRoute
-  ) { 
+  ) {
     this.route.params.subscribe(async params => await this.loadData(params["clientId"]));
   }
 
@@ -23,7 +23,7 @@ export class OffersListComponent implements OnInit {
   }
 
   async loadData(clientId: string) {
-    this.client = await this.clientService.getClient(clientId);
+    this.client = await this.clientService.GetClientById({ clientId: clientId }).toPromise();
   }
 
 }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Client, EmployeeProfile, CSSParameter } from "../../app/app.model";
 import { ActivatedRoute, Params } from "@angular/router";
-import { ClientService } from "../client.service";
-import { EmployeeService } from "../../employee/employee.service";
-import { TechDevsClientThemeService } from "../../core/services/techdevs-client-theme.service";
 import { environment } from "src/environments/environment";
+import { CSSParameter, Client } from "src/app/api/models";
+import { EmployeeProfile } from "src/app/api/models/employee-profile";
+import { ClientThemeService, EmployeeService, ClientService } from "src/app/api/services";
 
 @Component({
   selector: "app-client-detail",
@@ -12,12 +11,12 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./client-detail.component.scss"]
 })
 export class ClientDetailComponent implements OnInit {
-  client: Client = new Client();
+  client: Client = {};
   employee: EmployeeProfile;
-  initialState: Client = new Client();
+  initialState: Client = {};
 
   cssParamName: string;
-  cssParamValue: string;ß
+  cssParamValue: string;
 
   displayedColumns: string[] = ['key', 'value'];
   expandedElement: Client | null;
@@ -26,7 +25,7 @@ export class ClientDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private clientService: ClientService,
     private employeeService: EmployeeService,
-    private themeService: TechDevsClientThemeService
+    private themeService: ClientThemeService
   ) {
     this.route.params.subscribe(async params => await this.loadData(params["clientId"]));
   }
@@ -34,34 +33,27 @@ export class ClientDetailComponent implements OnInit {
   async ngOnInit() { }
 
   async loadData(clientId: string) {
-    this.client = await this.clientService.getClient(clientId, true);
+    this.client = await this.clientService.GetClientById({ clientId: clientId, includeRelatedAuthUsers: true }).toPromise();
     this.initialState = this.client;
   }
 
   async saveChanges() {
     console.log("UpdateEntity", this.client);
-    const result = await this.clientService.updateClient(this.client.id, this.client);
+    const result = await this.clientService.UpdateClient({ clientId: this.client.id, client: this.client }).toPromise();
     this.client = result;
   }
 
-  async save(propertyPath: string, value: string) {
-    console.log("UpdateObject", { propertyPath: propertyPath, value: value });
-    const result = await this.clientService.updateClientProperty(this.client.id, propertyPath, value);
-    await this.loadData(this.client.id);
-    console.log("Update Result", result);
-  }
-
   async resendInvite(employee: EmployeeProfile) {
-    await this.employeeService.resendInvitation(employee.emailAddress, this.client.id);
+    await this.employeeService.ResendInvitation({ email: employee.emailAddress, userId: this.client.id }).toPromise();
   }
 
   async setParameter() {
-    const result = await this.themeService.setParameter(this.client.shortKey, { key: this.cssParamName, value: this.cssParamValue });
+    const result = await this.themeService.AddParameter({ clientKey: this.client.shortKey, parameter: { key: this.cssParamName, value: this.cssParamValue } }).toPromise();
     this.client = result;
   }
 
   async removeParameter(param: CSSParameter) {
-    const result = await this.themeService.removeParameter(this.client.shortKey, param.key);
+    const result = await this.themeService.RemoveParameter({ clientKey: this.client.shortKey, key: param.key }).toPromise();
     this.client = result;
   }
 

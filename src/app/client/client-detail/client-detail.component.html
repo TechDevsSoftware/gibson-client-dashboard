@@ -3,11 +3,9 @@
 <div class="page-body">
 
   <div class="row">
-    <div class="col">
-      <h2>{{client?.name}}</h2>
-    </div>
-    <div class="col">
-      <img [src]="client?.clientTheme?.logoPath" class="brand-image">
+    <div class="col header">
+      <img [src]="client?.clientTheme?.logoPath" *ngIf="client?.clientTheme?.logoPath" class="brand-image">
+      <h2 *ngIf="!client?.clientTheme?.logoPath" class="brand-title">{{client?.name}}</h2>
     </div>
   </div>
   <br>

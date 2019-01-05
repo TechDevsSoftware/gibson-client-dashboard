@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
-import { UserProfile } from '../../../core/models/auth.models';
+import { AuthUserProfile } from 'src/app/api/models';
+import { EmployeeService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +10,15 @@ import { UserProfile } from '../../../core/models/auth.models';
 })
 export class ProfileComponent implements OnInit {
 
-  user: UserProfile;
+  user: AuthUserProfile;
 
   constructor(
+    private employeeService: EmployeeService,
     private authService: TechDevsAuthService
   ) { }
 
   async ngOnInit() {
-    this.user = await this.authService.getUserProfile();
+    this.user = await this.employeeService.GetProfile().toPromise();
     console.log(this.user);
   }
 

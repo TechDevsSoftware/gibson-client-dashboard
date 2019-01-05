@@ -1,12 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import {
-  Client,
-  AuthUserInviteAcceptRequest,
-  AuthUserProfile
-} from "../../app/app.model";
-import { ClientService } from "../../client/client.service";
-import { EmployeeService } from "../employee.service";
+import { Client, AuthUserProfile, AuthUserInvitationAcceptRequest } from "src/app/api/models";
+import { EmployeeService, ClientService } from "src/app/api/services";
 
 @Component({
   selector: "app-employee-invite-registration",
@@ -20,7 +15,7 @@ export class EmployeeInviteRegistrationComponent implements OnInit {
   confirmPassword: string;
   client: Client;
   profile: AuthUserProfile;
-  req = new AuthUserInviteAcceptRequest();
+  req: AuthUserInvitationAcceptRequest = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -43,24 +38,19 @@ export class EmployeeInviteRegistrationComponent implements OnInit {
   }
 
   async loadData() {
-    this.client = await this.clientService.getClient(this.clientId);
-    this.profile = await this.employeeService.userProfileFromInviteKey(
-      this.inviteKey,
-      this.clientId
-    );
+    this.client = await this.clientService.GetClientById({ clientId: this.clientId }).toPromise();
+    this.profile = await this.employeeService.GetUserProfileFromInviteKey({ inviteKey: this.inviteKey }).toPromise();
+
     this.req.inviteKey = this.inviteKey;
     this.req.email = this.profile.emailAddress;
   }
 
   resetForm() {
-    this.req = new AuthUserInviteAcceptRequest();
+    this.req = {};
   }
 
   async completeRegistration() {
-    const result = await this.employeeService.completeRegistration(
-      this.req,
-      this.clientId
-    );
+    const result = await this.employeeService.CompleteInviteRegistration({ request: this.req }).toPromise();
     this.router.navigate(["/clients", this.clientId]);
   }
 }

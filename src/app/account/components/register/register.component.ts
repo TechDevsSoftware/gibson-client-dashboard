@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRegistration } from '../../../core/models/auth.models';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
+import { EmployeeService } from 'src/app/api/services';
+import { AuthUserRegistration } from 'src/app/api/models';
 
 @Component({
   selector: 'app-register',
@@ -10,12 +10,12 @@ import { TechDevsAuthService } from '../../../core/services/techdevs-auth.servic
 })
 export class RegisterComponent implements OnInit {
 
-  reg: UserRegistration;
+  reg: AuthUserRegistration;
   confirmPassword: string;
   errMessage: string;
 
   constructor(
-    private accountsService: TechDevsAccountsService,
+    private employeeService: EmployeeService,
     private authService: TechDevsAuthService
   ) { }
 
@@ -24,8 +24,8 @@ export class RegisterComponent implements OnInit {
   }
 
   resetRegistration() {
-    this.reg = new UserRegistration();
-    this.reg.provider = "TechDevs";
+    this.reg = {};
+    this.reg.providerName = "TechDevs";
   }
 
   get passwordsMatch() {
@@ -33,15 +33,8 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    // First register the account
-    console.log("Registration request", this.reg);
-    const result = await this.accountsService.registerNewUser(this.reg);
-    console.log("Registration result", result);
-    if (result === "Success") {
-      await this.authService.loginWithEmail(this.reg.emailAddress, this.reg.password);
-    } else {
-      this.errMessage = result;
-    }
+    await this.employeeService.RegisterUser({ registration: this.reg }).toPromise();
+    await this.authService.loginWithEmail(this.reg.emailAddress, this.reg.password);
   }
 
 }

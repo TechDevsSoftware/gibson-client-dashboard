@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, Provider, APP_INITIALIZER } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app/app.component";
@@ -19,6 +19,9 @@ import { ClientKeyInterceptor } from "../core/interceptors/clientkey.interceptor
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { OffersModule } from "../offers/offers.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ApiModule } from "../api/api.module";
+import { ApiConfiguration } from "../api/api-configuration";
+import { environment } from "../../environments/environment";
 
 
 let config = new AuthServiceConfig([
@@ -31,6 +34,18 @@ let config = new AuthServiceConfig([
 export function provideConfig() {
   return config;
 }
+
+export function initApiConfiguration(config: ApiConfiguration): Function {
+  return () => {
+    config.rootUrl = environment.apiRoot;
+  };
+}
+export const INIT_API_CONFIGURATION: Provider = {
+  provide: APP_INITIALIZER,
+  useFactory: initApiConfiguration,
+  deps: [ApiConfiguration],
+  multi: true
+};
 
 @NgModule({
   declarations: [AppComponent, AppSidebarComponent, AppNavbarComponent],
@@ -47,7 +62,8 @@ export function provideConfig() {
     AccountModule,
     SocialLoginModule,
     OffersModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ApiModule
   ],
   providers: [
     {
@@ -60,7 +76,8 @@ export function provideConfig() {
       provide: HTTP_INTERCEPTORS,
       useClass: ClientKeyInterceptor,
       multi: true
-    }
+    },
+    INIT_API_CONFIGURATION
   ],
   bootstrap: [AppComponent]
 })

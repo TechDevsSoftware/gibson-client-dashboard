@@ -1,15 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { Client, AuthUserInvitationRequest } from "../../app/app.model";
-import { EmployeeService } from "../employee.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ClientService } from "../../client/client.service";
+import { ClientService, EmployeeService } from "src/app/api/services";
+import { AuthUserInvitationRequest, Client } from "src/app/api/models";
 
 @Component({
   templateUrl: "./employee-invite.component.html",
   styleUrls: ["./employee-invite.component.scss"]
 })
 export class EmployeeInviteComponent implements OnInit {
-  invite = new AuthUserInvitationRequest();
+  invite: AuthUserInvitationRequest = {};
   clientId: string;
   client: Client;
   errMessage: string;
@@ -29,13 +28,13 @@ export class EmployeeInviteComponent implements OnInit {
   }
 
   resetForm() {
-    this.invite = new AuthUserInvitationRequest();
+    this.invite = {};
     this.invite.clientName = this.client.name;
   }
 
   async getClientData() {
     try {
-      this.client = await this.clientService.getClient(this.clientId);
+      this.client = await this.clientService.GetClientById({ clientId: this.clientId }).toPromise();
       this.resetForm();
     } catch (error) {
       this.errMessage = error.message;
@@ -45,10 +44,7 @@ export class EmployeeInviteComponent implements OnInit {
   async inviteEmployee() {
     console.log({ invite: this.invite, clientId: this.clientId });
     try {
-      const result = await this.employeeService.inviteEmployee(
-        this.invite,
-        this.clientId
-      );
+      const result = await this.employeeService.InviteEmployee({invite: this.invite});
       console.log("Invite result", result);
       this.router.navigate(["/clients", this.clientId]);
     } catch (error) {
